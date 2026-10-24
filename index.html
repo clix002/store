@@ -3,22 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GDG Ayacucho | Google Developer Groups</title>
-  <meta name="description" content="Comunidad oficial de Google Developer Groups en Ayacucho, Perú. Aprende, comparte y conecta con apasionados de la tecnología, IA, Cloud, Web y Mobile." />
-  <meta name="keywords" content="GDG Ayacucho, Google Developer Groups, DevFest Ayacucho, Huamanga, Tecnología Perú, Flutter, Cloud, Gemini, Inteligencia Artificial" />
-
-  <!-- Open Graph / Meta Social -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="GDG Ayacucho | Google Developer Groups" />
-  <meta property="og:description" content="Impulsando el talento tecnológico desde los Andes peruanos. Eventos, talleres, conferencias y networking." />
-  <meta property="og:locale" content="es_PE" />
+  <title>GitHub Actions & CI/CD | GDG Ayacucho</title>
+  <meta name="description" content="Aprende y domina GitHub Actions con GDG Ayacucho. Automatiza pruebas, integración continua y despliegues desde cero." />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind CSS CDN con configuración personalizada -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -27,32 +20,21 @@
         extend: {
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            display: ['"Space Grotesk"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
+            gh: {
+              blue: '#2f81f7',
+              green: '#238636',
+              purple: '#8957e5',
+              dark: '#0d1117',
+              border: '#30363d',
+            },
             google: {
               blue: '#4285F4',
               red: '#EA4335',
               yellow: '#FBBC05',
               green: '#34A853',
-              dark: '#202124',
-              gray: '#5f6368',
-            }
-          },
-          animation: {
-            'blob': 'blob 7s infinite',
-            'fade-in': 'fadeIn 0.5s ease-out forwards',
-          },
-          keyframes: {
-            blob: {
-              '0%': { transform: 'translate(0px, 0px) scale(1)' },
-              '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-              '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-              '100%': { transform: 'translate(0px, 0px) scale(1)' },
-            },
-            fadeIn: {
-              '0%': { opacity: '0', transform: 'translateY(10px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
             }
           }
         }
@@ -61,603 +43,324 @@
   </script>
 
   <style>
-    /* Gradient border & glow utilities */
-    .google-gradient-text {
-      background: linear-gradient(135deg, #4285F4 0%, #EA4335 35%, #FBBC05 70%, #34A853 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .google-border-gradient {
-      border-image: linear-gradient(to right, #4285F4, #EA4335, #FBBC05, #34A853) 1;
-    }
-    .glass-card {
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-    .dark .glass-card {
-      background: rgba(30, 41, 59, 0.7);
+    .code-glow {
+      box-shadow: 0 0 30px -5px rgba(47, 129, 247, 0.25);
     }
   </style>
 </head>
 
-<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 font-sans antialiased overflow-x-hidden selection:bg-google-blue selection:text-white">
+<body class="bg-slate-50 text-slate-800 dark:bg-[#0d1117] dark:text-[#c9d1d9] font-sans antialiased selection:bg-gh-blue selection:text-white transition-colors duration-300">
 
   <!-- ================= NAVBAR ================= -->
-  <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-slate-950/80 border-b border-slate-200/80 dark:border-slate-800/80 transition-colors">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        
-        <!-- Logo GDG -->
-        <a href="#hero" class="flex items-center gap-3 group">
-          <div class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-900 flex items-center justify-center p-2 shadow-sm border border-slate-200 dark:border-slate-800 group-hover:scale-105 transition-transform">
-            <!-- GDG Brackets SVG -->
-            <svg viewBox="0 0 192 116" class="w-full h-auto" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M57.6 0H0L57.6 58L0 116H57.6L115.2 58L57.6 0Z" fill="#4285F4"/>
-              <path d="M134.4 0H76.8L134.4 58L76.8 116H134.4L192 58L134.4 0Z" fill="#EA4335"/>
-              <path d="M76.8 0H57.6L115.2 58L57.6 116H76.8L134.4 58L76.8 0Z" fill="#FBBC05"/>
-              <path d="M115.2 0H96L153.6 58L96 116H115.2L172.8 58L115.2 0Z" fill="#34A853"/>
-            </svg>
-          </div>
-          <div class="flex flex-col">
-            <span class="font-display font-bold text-lg leading-tight tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
-              GDG Ayacucho
-              <span class="inline-block w-2 h-2 rounded-full bg-google-green animate-pulse"></span>
-            </span>
-            <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Google Developer Groups</span>
-          </div>
-        </a>
-
-        <!-- Desktop Navigation -->
-        <nav class="hidden md:flex items-center gap-8">
-          <a href="#acerca" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-google-blue dark:hover:text-google-blue transition-colors">Acerca</a>
-          <a href="#tecnologias" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-google-blue dark:hover:text-google-blue transition-colors">Tecnologías</a>
-          <a href="#eventos" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-google-blue dark:hover:text-google-blue transition-colors">Eventos</a>
-          <a href="#comunidad" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-google-blue dark:hover:text-google-blue transition-colors">Comunidad</a>
-          <a href="#faq" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-google-blue dark:hover:text-google-blue transition-colors">Preguntas</a>
-        </nav>
-
-        <!-- Actions -->
-        <div class="flex items-center gap-3">
-          <!-- Dark mode toggle -->
-          <button id="theme-toggle" aria-label="Cambiar tema" class="p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors">
-            <!-- Sun icon -->
-            <svg id="theme-icon-light" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-            </svg>
-            <!-- Moon icon -->
-            <svg id="theme-icon-dark" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-            </svg>
-          </button>
-
-          <!-- CTA Button -->
-          <a href="https://gdg.community.dev/" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-google-blue hover:bg-blue-600 transition-all shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-0.5">
-            <span>Unirme al GDG</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          </a>
-
-          <!-- Mobile Menu Button -->
-          <button id="mobile-menu-btn" aria-label="Abrir menú" class="md:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
-          </button>
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-[#0d1117]/80 border-b border-slate-200 dark:border-[#30363d]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      
+      <!-- Logo GDG + GitHub Actions -->
+      <a href="#hero" class="flex items-center gap-3">
+        <!-- GitHub Actions icon -->
+        <div class="w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center p-2 shadow-sm border border-slate-700">
+          <svg viewBox="0 0 24 24" class="w-full h-full fill-current text-[#2f81f7]" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
         </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-sm tracking-tight text-slate-900 dark:text-white">GitHub Actions</span>
+            <span class="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-blue-100 text-google-blue dark:bg-blue-950 dark:text-google-blue border border-blue-500/20">CI/CD</span>
+          </div>
+          <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">GDG Ayacucho</span>
+        </div>
+      </a>
 
+      <!-- Quick Nav -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <a href="#conceptos" class="hover:text-gh-blue transition-colors">Conceptos</a>
+        <a href="#ejemplo" class="hover:text-gh-blue transition-colors">Workflow YAML</a>
+        <a href="#beneficios" class="hover:text-gh-blue transition-colors">Beneficios</a>
+        <a href="#faq" class="hover:text-gh-blue transition-colors">Preguntas</a>
+      </nav>
+
+      <!-- Theme & Action -->
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" class="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#161b22] border border-transparent dark:border-[#30363d]">
+          <span id="theme-icon">🌙</span>
+        </button>
+        <a href="https://github.com/features/actions" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg text-xs font-semibold text-white bg-[#238636] hover:bg-[#2ea043] transition-colors shadow-sm">
+          Docs Oficiales
+        </a>
       </div>
 
-      <!-- Mobile dropdown menu -->
-      <div id="mobile-menu" class="hidden md:hidden py-4 border-t border-slate-200 dark:border-slate-800 space-y-3">
-        <a href="#acerca" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Acerca</a>
-        <a href="#tecnologias" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Tecnologías</a>
-        <a href="#eventos" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Eventos</a>
-        <a href="#comunidad" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Comunidad</a>
-        <a href="#faq" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Preguntas</a>
-        <a href="https://gdg.community.dev/" target="_blank" rel="noopener noreferrer" class="block w-full text-center px-4 py-2.5 rounded-xl font-semibold text-white bg-google-blue">Unirme al GDG</a>
-      </div>
     </div>
   </header>
 
   <!-- ================= HERO SECTION ================= -->
-  <section id="hero" class="relative pt-16 pb-24 md:pt-28 md:pb-36 overflow-hidden">
-    <!-- Background glow elements -->
-    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-google-blue/15 dark:bg-google-blue/10 rounded-full blur-3xl pointer-events-none animate-blob"></div>
-    <div class="absolute top-1/3 left-1/4 w-80 h-80 bg-google-red/15 dark:bg-google-red/10 rounded-full blur-3xl pointer-events-none animate-blob" style="animation-delay: 2s;"></div>
-    <div class="absolute top-1/2 right-1/4 w-80 h-80 bg-google-green/15 dark:bg-google-green/10 rounded-full blur-3xl pointer-events-none animate-blob" style="animation-delay: 4s;"></div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+  <section id="hero" class="py-16 md:py-24 relative overflow-hidden border-b border-slate-200 dark:border-[#30363d]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
       
-      <!-- Community badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wide border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 backdrop-blur-md text-slate-700 dark:text-slate-300 shadow-sm mb-8 hover:scale-105 transition-transform">
-        <span class="w-2.5 h-2.5 rounded-full bg-google-blue"></span>
-        <span>Comunidad Oficial en Ayacucho, Perú</span>
-        <span class="text-slate-400">|</span>
-        <span class="text-google-blue font-bold">Huamanga Tech</span>
+      <!-- GDG Ayacucho badge -->
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-[#161b22] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-[#30363d] mb-6">
+        <span class="w-2 h-2 rounded-full bg-google-blue"></span>
+        <span>Especial Técnico • GDG Ayacucho</span>
       </div>
 
-      <!-- Main Headline -->
-      <h1 class="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl tracking-tight max-w-4xl mx-auto leading-[1.15] mb-6">
-        Construyendo el futuro tecnológico desde <span class="google-gradient-text">Ayacucho</span>
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight mb-6">
+        Automatiza tus proyectos con <br class="hidden sm:block"/>
+        <span class="text-gh-blue">GitHub Actions</span>
       </h1>
 
-      <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto font-normal leading-relaxed mb-10">
-        Google Developer Groups (GDG) Ayacucho es un espacio abierto para desarrolladores, diseñadores, estudiantes y entusiastas tech que buscan aprender, colaborar e innovar juntos.
+      <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed mb-8">
+        Aprende a crear flujos de integración y entrega continua (CI/CD) directamente en tu repositorio. Ejecuta pruebas, linters y despliegues automáticos con cada <code>git push</code>.
       </p>
 
-      <!-- CTA Buttons -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto mb-16">
-        <a href="#eventos" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-bold text-white bg-google-blue hover:bg-blue-600 shadow-xl shadow-blue-500/25 hover:shadow-blue-500/40 transition-all hover:-translate-y-0.5">
-          <span>Ver Próximos Eventos</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a href="#ejemplo" class="px-6 py-3 rounded-xl font-bold text-sm text-white bg-gh-blue hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/20">
+          Ver Código del Pipeline
         </a>
-
-        <a href="#acerca" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-bold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-all">
-          <span>Conoce la Comunidad</span>
+        <a href="#conceptos" class="px-6 py-3 rounded-xl font-semibold text-sm text-slate-700 dark:text-slate-200 bg-white dark:bg-[#161b22] border border-slate-200 dark:border-[#30363d] hover:bg-slate-100 dark:hover:bg-[#21262d] transition-colors">
+          ¿Cómo Funciona?
         </a>
-      </div>
-
-      <!-- Tech stack pills -->
-      <div class="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-          <span class="w-2 h-2 rounded-full bg-google-blue"></span> Google Cloud
-        </span>
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-          <span class="w-2 h-2 rounded-full bg-google-red"></span> Gemini & AI
-        </span>
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-          <span class="w-2 h-2 rounded-full bg-google-yellow"></span> Flutter & Android
-        </span>
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-          <span class="w-2 h-2 rounded-full bg-google-green"></span> Web & Astro
-        </span>
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-          <span class="w-2 h-2 rounded-full bg-purple-500"></span> Firebase
-        </span>
       </div>
 
     </div>
   </section>
 
-  <!-- ================= STATS SECTION ================= -->
-  <section class="border-y border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/40 backdrop-blur-sm py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        <div>
-          <div class="font-display font-bold text-3xl sm:text-4xl text-google-blue mb-1">+500</div>
-          <div class="text-sm font-medium text-slate-500 dark:text-slate-400">Miembros en Ayacucho</div>
-        </div>
-        <div>
-          <div class="font-display font-bold text-3xl sm:text-4xl text-google-red mb-1">20+</div>
-          <div class="text-sm font-medium text-slate-500 dark:text-slate-400">Eventos y Meetups</div>
-        </div>
-        <div>
-          <div class="font-display font-bold text-3xl sm:text-4xl text-google-yellow mb-1">35+</div>
-          <div class="text-sm font-medium text-slate-500 dark:text-slate-400">Speakers y Mentores</div>
-        </div>
-        <div>
-          <div class="font-display font-bold text-3xl sm:text-4xl text-google-green mb-1">100%</div>
-          <div class="text-sm font-medium text-slate-500 dark:text-slate-400">Libre y Gratuito</div>
-        </div>
-      </div>
+  <!-- ================= CONCEPTOS ================= -->
+  <section id="conceptos" class="py-16 max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-xs uppercase tracking-widest font-bold text-gh-blue mb-2">Estructura Fundamental</h2>
+      <h3 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Los 4 pilares de un Workflow</h3>
     </div>
-  </section>
 
-  <!-- ================= ABOUT SECTION ================= -->
-  <section id="acerca" class="py-20 md:py-28 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-xs uppercase tracking-widest font-bold text-google-blue mb-3">Nuestra Esencia</h2>
-        <h3 class="font-display font-bold text-3xl sm:text-4xl text-slate-900 dark:text-white tracking-tight">
-          ¿Qué es Google Developer Groups Ayacucho?
-        </h3>
-        <p class="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-          Somos un grupo independiente respaldado por el programa global de Google Developers. Nuestro objetivo es democratizar el conocimiento tecnológico, impulsar el emprendimiento digital y forjar líderes tech en la región de Ayacucho.
+      <!-- Pilar 1 -->
+      <div class="p-6 rounded-2xl bg-white dark:bg-[#161b22] border border-slate-200 dark:border-[#30363d]">
+        <div class="w-8 h-8 rounded-lg bg-blue-500/10 text-gh-blue flex items-center justify-center font-mono font-bold text-sm mb-4">1</div>
+        <h4 class="font-bold text-base text-slate-900 dark:text-white mb-2">Eventos (on:)</h4>
+        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+          El detonante del pipeline: <code>push</code>, <code>pull_request</code>, o manual con <code>workflow_dispatch</code>.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
-        <!-- Card 1 -->
-        <div class="glass-card p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-google-blue/50 dark:hover:border-google-blue/50 transition-all hover:-translate-y-1">
-          <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-950/60 text-google-blue flex items-center justify-center mb-6">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-          </div>
-          <h4 class="font-display font-bold text-xl text-slate-900 dark:text-white mb-2">Aprende Haciendo</h4>
-          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            Talleres prácticos (Codelabs), bootcamps y hackathons con tecnologías de vanguardia como IA Generativa, Cloud Computing y desarrollo multiplataforma.
-          </p>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="glass-card p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-google-red/50 dark:hover:border-google-red/50 transition-all hover:-translate-y-1">
-          <div class="w-12 h-12 rounded-xl bg-red-100 dark:bg-red-950/60 text-google-red flex items-center justify-center mb-6">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-          </div>
-          <h4 class="font-display font-bold text-xl text-slate-900 dark:text-white mb-2">Comunidad & Redes</h4>
-          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            Conecta con otros desarrolladores locales, profesionales de la industria, empresas tecnológicas y mentores de todo el Perú y Latinoamérica.
-          </p>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="glass-card p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-google-green/50 dark:hover:border-google-green/50 transition-all hover:-translate-y-1">
-          <div class="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-950/60 text-google-green flex items-center justify-center mb-6">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          </div>
-          <h4 class="font-display font-bold text-xl text-slate-900 dark:text-white mb-2">Impacto Real</h4>
-          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            Fomentamos la creación de soluciones digitales a problemáticas locales de Ayacucho como turismo, agricultura, educación y patrimonio cultural.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================= TECH TRACKS SECTION ================= -->
-  <section id="tecnologias" class="py-20 md:py-28 bg-slate-100/60 dark:bg-slate-900/60 border-t border-slate-200 dark:border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-xs uppercase tracking-widest font-bold text-google-green mb-3">Ejes de Aprendizaje</h2>
-        <h3 class="font-display font-bold text-3xl sm:text-4xl text-slate-900 dark:text-white tracking-tight">
-          Tecnologías que exploramos
-        </h3>
-        <p class="mt-4 text-base text-slate-600 dark:text-slate-400">
-          Nos mantenemos a la vanguardia con los ecosistemas oficiales de Google y tecnologías de código abierto.
+      <!-- Pilar 2 -->
+      <div class="p-6 rounded-2xl bg-white dark:bg-[#161b22] border border-slate-200 dark:border-[#30363d]">
+        <div class="w-8 h-8 rounded-lg bg-green-500/10 text-gh-green flex items-center justify-center font-mono font-bold text-sm mb-4">2</div>
+        <h4 class="font-bold text-base text-slate-900 dark:text-white mb-2">Jobs (jobs:)</h4>
+        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+          Conjunto de pasos que se ejecutan en una máquina virtual limpia (ej. <code>ubuntu-latest</code>).
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <!-- Track 1 -->
-        <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between hover:shadow-lg transition-all group">
-          <div>
-            <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-google-blue flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-            </div>
-            <h4 class="font-display font-bold text-lg text-slate-900 dark:text-white mb-2">Web Moderna</h4>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Astro, Angular, Chrome DevTools, Progressive Web Apps (PWA) y rendimiento web.</p>
-          </div>
-          <span class="text-xs font-semibold text-google-blue">Explorar Codelabs &rarr;</span>
-        </div>
+      <!-- Pilar 3 -->
+      <div class="p-6 rounded-2xl bg-white dark:bg-[#161b22] border border-slate-200 dark:border-[#30363d]">
+        <div class="w-8 h-8 rounded-lg bg-purple-500/10 text-gh-purple flex items-center justify-center font-mono font-bold text-sm mb-4">3</div>
+        <h4 class="font-bold text-base text-slate-900 dark:text-white mb-2">Pasos (steps:)</h4>
+        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+          Tareas individuales: clonar el repo (<code>actions/checkout</code>), preparar NodeJS o correr tests.
+        </p>
+      </div>
 
-        <!-- Track 2 -->
-        <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between hover:shadow-lg transition-all group">
-          <div>
-            <div class="w-10 h-10 rounded-lg bg-red-500/10 text-google-red flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-            </div>
-            <h4 class="font-display font-bold text-lg text-slate-900 dark:text-white mb-2">Mobile & Flutter</h4>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Desarrollo multiplataforma en iOS, Android y Desktop con Flutter y Kotlin.</p>
-          </div>
-          <span class="text-xs font-semibold text-google-red">Explorar Codelabs &rarr;</span>
-        </div>
-
-        <!-- Track 3 -->
-        <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between hover:shadow-lg transition-all group">
-          <div>
-            <div class="w-10 h-10 rounded-lg bg-yellow-500/10 text-google-yellow flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
-            </div>
-            <h4 class="font-display font-bold text-lg text-slate-900 dark:text-white mb-2">Google Cloud</h4>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Infraestructura escalable, Serverless, Cloud Run, BigQuery y Kubernetes.</p>
-          </div>
-          <span class="text-xs font-semibold text-google-yellow">Explorar Codelabs &rarr;</span>
-        </div>
-
-        <!-- Track 4 -->
-        <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between hover:shadow-lg transition-all group">
-          <div>
-            <div class="w-10 h-10 rounded-lg bg-green-500/10 text-google-green flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-            </div>
-            <h4 class="font-display font-bold text-lg text-slate-900 dark:text-white mb-2">AI & Gemini</h4>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Modelos multimodales Gemini API, LangChain, TensorFlow y agentes de IA.</p>
-          </div>
-          <span class="text-xs font-semibold text-google-green">Explorar Codelabs &rarr;</span>
-        </div>
-
+      <!-- Pilar 4 -->
+      <div class="p-6 rounded-2xl bg-white dark:bg-[#161b22] border border-slate-200 dark:border-[#30363d]">
+        <div class="w-8 h-8 rounded-lg bg-yellow-500/10 text-google-yellow flex items-center justify-center font-mono font-bold text-sm mb-4">4</div>
+        <h4 class="font-bold text-base text-slate-900 dark:text-white mb-2">Acciones (actions)</h4>
+        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+          Módulos reutilizables de la comunidad del GitHub Marketplace para compilar, verificar o desplegar.
+        </p>
       </div>
 
     </div>
   </section>
 
-  <!-- ================= EVENTS SECTION ================= -->
-  <section id="eventos" class="py-20 md:py-28 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- ================= WORKFLOW INTERACTIVO ================= -->
+  <section id="ejemplo" class="py-16 bg-slate-100/70 dark:bg-[#161b22]/50 border-y border-slate-200 dark:border-[#30363d]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
       
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-        <div>
-          <h2 class="text-xs uppercase tracking-widest font-bold text-google-red mb-3">Agenda & Encuentros</h2>
-          <h3 class="font-display font-bold text-3xl sm:text-4xl text-slate-900 dark:text-white tracking-tight">
-            Próximos Eventos
-          </h3>
-          <p class="mt-2 text-base text-slate-600 dark:text-slate-400">
-            Asegura tu lugar en nuestras sesiones presenciales y virtuales.
-          </p>
-        </div>
-        <a href="https://gdg.community.dev/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-google-blue hover:underline">
-          <span>Ver calendario en Bevy GDG</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-        </a>
+      <div class="text-center mb-10">
+        <h2 class="text-xs uppercase tracking-widest font-bold text-gh-green mb-2">Ejemplo en Vivo</h2>
+        <h3 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Workflow Real en este Repositorio</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+          Ubicado en <code>.github/workflows/blank.yml</code> con soporte para ejecución manual.
+        </p>
       </div>
 
-      <!-- Featured Event Card -->
-      <div class="relative overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-white via-slate-50 to-blue-50/40 dark:from-slate-900 dark:via-slate-900 dark:to-blue-950/20 p-8 sm:p-12 shadow-xl mb-8">
-        <div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-google-blue/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-          <div class="lg:col-span-2">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-google-red text-white uppercase tracking-wider mb-4">
-              Evento Principal • DevFest
-            </div>
-            <h4 class="font-display font-extrabold text-2xl sm:text-4xl text-slate-900 dark:text-white mb-4">
-              DevFest Ayacucho 2026: The AI Revolution
-            </h4>
-            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
-              La fiesta tecnológica más grande de Ayacucho reúne a expertos de Google Developer Experts (GDE), speakers internacionales, talleres de IA con Gemini, Cloud y desarrollo mobile. ¡No te quedes fuera!
-            </p>
-
-            <div class="flex flex-wrap gap-4 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300">
-              <span class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-google-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                Noviembre 2026
-              </span>
-              <span class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-google-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                Auditorio UNSCH / Presencial
-              </span>
-              <span class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-google-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                9:00 AM - 6:00 PM (GMT-5)
-              </span>
-            </div>
-          </div>
-
-          <div class="flex flex-col items-start lg:items-end justify-center">
-            <button onclick="handleRSVP()" class="w-full sm:w-auto px-8 py-4 rounded-2xl font-bold text-white bg-google-blue hover:bg-blue-600 shadow-xl shadow-blue-500/25 transition-all hover:scale-105 active:scale-95 text-center">
-              Reservar Mi Entrada (Gratis)
-            </button>
-            <span class="text-xs text-slate-500 dark:text-slate-400 mt-3">Cupos limitados por aforo presencial</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Additional Meetup Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Code Box -->
+      <div class="rounded-2xl border border-slate-300 dark:border-[#30363d] bg-white dark:bg-[#0d1117] overflow-hidden code-glow">
         
-        <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-xs font-semibold px-2.5 py-1 rounded bg-blue-100 dark:bg-blue-950 text-google-blue">Workshop</span>
-              <span class="text-xs text-slate-500">Virtual • Google Meet</span>
-            </div>
-            <h5 class="font-display font-bold text-xl text-slate-900 dark:text-white mb-2">Build with AI: Creando apps con Gemini 1.5 Pro</h5>
-            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Aprende a integrar el SDK de Gemini en proyectos Node.js y Python desde cero.</p>
+        <!-- Code Header -->
+        <div class="px-5 py-3 border-b border-slate-200 dark:border-[#30363d] bg-slate-50 dark:bg-[#161b22] flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-red-500"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+            <span class="w-3 h-3 rounded-full bg-green-500"></span>
+            <span class="font-mono text-xs text-slate-500 dark:text-slate-400 ml-2">.github/workflows/blank.yml</span>
           </div>
-          <button onclick="handleRSVP()" class="text-xs font-bold text-google-blue hover:underline text-left">Registrarme &rarr;</button>
+          <button id="copy-btn" class="text-xs font-mono text-slate-500 hover:text-gh-blue transition-colors flex items-center gap-1">
+            <span>Copiar YAML</span>
+          </button>
         </div>
 
-        <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-xs font-semibold px-2.5 py-1 rounded bg-green-100 dark:bg-green-950 text-google-green">Meetup Presencial</span>
-              <span class="text-xs text-slate-500">Huamanga, Ayacucho</span>
-            </div>
-            <h5 class="font-display font-bold text-xl text-slate-900 dark:text-white mb-2">Flutter Forward: Apps modernas multiplataforma</h5>
-            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Arquitectura limpia, Riverpod y despliegue a Play Store en tiempo récord.</p>
-          </div>
-          <button onclick="handleRSVP()" class="text-xs font-bold text-google-green hover:underline text-left">Registrarme &rarr;</button>
-        </div>
+        <!-- Code Content -->
+        <pre class="p-6 font-mono text-xs sm:text-sm overflow-x-auto leading-relaxed text-slate-800 dark:text-slate-200"><code id="yaml-code"><span class="text-blue-500 dark:text-blue-400 font-bold">name</span>: CI/CD Pipeline
 
+<span class="text-blue-500 dark:text-blue-400 font-bold">on</span>:
+  <span class="text-purple-500 dark:text-purple-400">push</span>:
+  <span class="text-purple-500 dark:text-purple-400">workflow_dispatch</span>:
+    <span class="text-slate-500">inputs</span>:
+      <span class="text-slate-500">saludo</span>:
+        <span class="text-slate-500">description</span>: <span class="text-green-600 dark:text-green-400">"Selecciona un saludo"</span>
+        <span class="text-slate-500">type</span>: choice
+        <span class="text-slate-500">options</span>: [<span class="text-green-600 dark:text-green-400">"Hola"</span>, <span class="text-green-600 dark:text-green-400">"Adiós"</span>]
+
+<span class="text-blue-500 dark:text-blue-400 font-bold">jobs</span>:
+  <span class="text-yellow-600 dark:text-yellow-400 font-bold">unit-tests</span>:
+    <span class="text-slate-500">runs-on</span>: ubuntu-latest
+    <span class="text-slate-500">steps</span>:
+      - <span class="text-blue-500 dark:text-blue-400">uses</span>: actions/checkout@v4
+      - <span class="text-blue-500 dark:text-blue-400">run</span>: |
+          echo "hola ${{ github.actor }}; commit: ${{ github.sha }}"
+      - <span class="text-blue-500 dark:text-blue-400">run</span>: |
+          echo "Elegiste: ${{ inputs.saludo }}"</code></pre>
+      </div>
+
+      <div class="mt-4 p-4 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60 text-xs text-slate-700 dark:text-slate-300 flex items-start gap-3">
+        <span class="text-gh-blue font-bold text-base">💡</span>
+        <span>
+          <strong>Regla de oro de YAML:</strong> Si un comando en <code>run</code> contiene dos puntos seguidos de espacio (como <code>commit: </code> o <code>Elegiste: </code>), usa <code>run: |</code> o comillas para evitar errores de sintaxis (*"mapping values are not allowed here"*).
+        </span>
       </div>
 
     </div>
   </section>
 
-  <!-- ================= COMMUNITY & SPONSORS ================= -->
-  <section id="comunidad" class="py-20 md:py-28 bg-slate-100/60 dark:bg-slate-900/60 border-t border-slate-200 dark:border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+  <!-- ================= CASOS DE USO ================= -->
+  <section id="beneficios" class="py-16 max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-xs uppercase tracking-widest font-bold text-google-yellow mb-2">¿Para qué lo usamos?</h2>
+      <h3 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Casos de Uso Comunes</h3>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       
-      <h2 class="text-xs uppercase tracking-widest font-bold text-google-yellow mb-3">Únete a Nosotros</h2>
-      <h3 class="font-display font-bold text-3xl sm:text-4xl text-slate-900 dark:text-white tracking-tight mb-4">
-        Sé parte del movimiento tech en Ayacucho
-      </h3>
-      <p class="text-base text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-12">
-        Tanto si estás dando tus primeros pasos en programación como si ya eres un desarrollador senior, hay un lugar para ti en GDG Ayacucho.
-      </p>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto mb-16">
-        
-        <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
-          <div class="font-display font-bold text-lg text-slate-900 dark:text-white mb-1">Como Asistente</div>
-          <p class="text-xs text-slate-500 dark:text-slate-400">Participa en charlas, workshops y gana swag oficial de Google.</p>
-        </div>
-
-        <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
-          <div class="font-display font-bold text-lg text-slate-900 dark:text-white mb-1">Como Speaker</div>
-          <p class="text-xs text-slate-500 dark:text-slate-400">Comparte tu experiencia técnica con la comunidad andina.</p>
-        </div>
-
-        <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
-          <div class="font-display font-bold text-lg text-slate-900 dark:text-white mb-1">Como Voluntario</div>
-          <p class="text-xs text-slate-500 dark:text-slate-400">Ayuda en logística, streaming, fotografía y diseño.</p>
-        </div>
-
+      <div class="p-6 rounded-2xl bg-white dark:bg-[#161b22] border border-slate-200 dark:border-[#30363d]">
+        <div class="text-2xl mb-3">🧪</div>
+        <h4 class="font-bold text-base text-slate-900 dark:text-white mb-2">Pruebas Automáticas</h4>
+        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+          Verifica que tus tests unitarios y de integración pasen antes de aceptar un Pull Request a la rama <code>main</code>.
+        </p>
       </div>
 
-      <!-- Join Channels Banner -->
-      <div class="max-w-2xl mx-auto p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-center gap-4">
-        <a href="https://gdg.community.dev/" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-google-blue hover:bg-blue-600 transition-colors">
-          Capítulo Bevy GDG
-        </a>
-        <a href="https://chat.whatsapp.com/" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-google-green hover:bg-green-600 transition-colors">
-          Grupo WhatsApp Tech
-        </a>
-        <a href="https://t.me/" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
-          Canal Telegram
-        </a>
+      <div class="p-6 rounded-2xl bg-white dark:bg-[#161b22] border border-slate-200 dark:border-[#30363d]">
+        <div class="text-2xl mb-3">🚀</div>
+        <h4 class="font-bold text-base text-slate-900 dark:text-white mb-2">Despliegue Continuo (CD)</h4>
+        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+          Despliega automáticamente tu landing page o app a Firebase Hosting, GitHub Pages o Google Cloud Run tras cada cambio.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-white dark:bg-[#161b22] border border-slate-200 dark:border-[#30363d]">
+        <div class="text-2xl mb-3">🛡️</div>
+        <h4 class="font-bold text-base text-slate-900 dark:text-white mb-2">Seguridad & Calidad</h4>
+        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+          Ejecuta linters (ESLint, Prettier) y análisis estático de vulnerabilidades para mantener tu base de código impecable.
+        </p>
       </div>
 
     </div>
   </section>
 
-  <!-- ================= FAQ SECTION ================= -->
-  <section id="faq" class="py-20 md:py-28">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- ================= FAQ ================= -->
+  <section id="faq" class="py-16 bg-slate-100/70 dark:bg-[#161b22]/50 border-t border-slate-200 dark:border-[#30363d]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
       
-      <div class="text-center mb-16">
-        <h2 class="text-xs uppercase tracking-widest font-bold text-google-blue mb-3">Dudas Frecuentes</h2>
-        <h3 class="font-display font-bold text-3xl sm:text-4xl text-slate-900 dark:text-white tracking-tight">
-          Preguntas frecuentes
-        </h3>
+      <div class="text-center mb-10">
+        <h2 class="text-xs uppercase tracking-widest font-bold text-gh-blue mb-2">Resolviendo dudas</h2>
+        <h3 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Preguntas Rápidas</h3>
       </div>
 
-      <div class="space-y-4">
-        
-        <!-- FAQ item 1 -->
-        <div class="border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-white dark:bg-slate-900">
-          <button class="faq-btn w-full text-left px-6 py-4 font-display font-semibold text-base text-slate-900 dark:text-white flex justify-between items-center">
-            <span>¿Tiene algún costo unirse a GDG Ayacucho o asistir a los eventos?</span>
-            <svg class="faq-icon w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-content hidden px-6 pb-4 text-sm text-slate-600 dark:text-slate-400 border-t border-slate-100 dark:border-slate-800 pt-3">
-            No, todos nuestros eventos regulares, talleres y meetups son 100% gratuitos y abiertos a todo el público.
-          </div>
+      <div class="space-y-4 text-left">
+        <div class="p-5 rounded-xl bg-white dark:bg-[#0d1117] border border-slate-200 dark:border-[#30363d]">
+          <h4 class="font-bold text-sm text-slate-900 dark:text-white mb-1">¿Dónde se guardan los archivos de pipeline?</h4>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Siempre en la carpeta <code>.github/workflows/</code> en formato <code>.yml</code> o <code>.yaml</code>.</p>
         </div>
 
-        <!-- FAQ item 2 -->
-        <div class="border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-white dark:bg-slate-900">
-          <button class="faq-btn w-full text-left px-6 py-4 font-display font-semibold text-base text-slate-900 dark:text-white flex justify-between items-center">
-            <span>¿Necesito saber programar para asistir?</span>
-            <svg class="faq-icon w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-content hidden px-6 pb-4 text-sm text-slate-600 dark:text-slate-400 border-t border-slate-100 dark:border-slate-800 pt-3">
-            ¡Para nada! Tenemos actividades tanto introductorias para principiantes como sesiones avanzadas para seniors. Todos son bienvenidos.
-          </div>
+        <div class="p-5 rounded-xl bg-white dark:bg-[#0d1117] border border-slate-200 dark:border-[#30363d]">
+          <h4 class="font-bold text-sm text-slate-900 dark:text-white mb-1">¿Es gratuito GitHub Actions?</h4>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Sí, es 100% gratuito con 2,000 minutos mensuales en repositorios públicos y suficiente cuota para proyectos personales.</p>
         </div>
 
-        <!-- FAQ item 3 -->
-        <div class="border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-white dark:bg-slate-900">
-          <button class="faq-btn w-full text-left px-6 py-4 font-display font-semibold text-base text-slate-900 dark:text-white flex justify-between items-center">
-            <span>¿Cómo puedo proponer una charla o postularme como speaker?</span>
-            <svg class="faq-icon w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="faq-content hidden px-6 pb-4 text-sm text-slate-600 dark:text-slate-400 border-t border-slate-100 dark:border-slate-800 pt-3">
-            Puedes escribirnos directamente a nuestras redes sociales o registrar tu propuesta a través de nuestro Call for Speakers (CFP) oficial en cada edición de DevFest.
-          </div>
+        <div class="p-5 rounded-xl bg-white dark:bg-[#0d1117] border border-slate-200 dark:border-[#30363d]">
+          <h4 class="font-bold text-sm text-slate-900 dark:text-white mb-1">¿Cómo ejecuto el workflow manualmente?</h4>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Asegúrate de incluir <code>workflow_dispatch:</code> en la sección <code>on:</code>, luego ve a la pestaña <strong>Actions</strong> en GitHub y haz clic en "Run workflow".</p>
         </div>
-
       </div>
 
     </div>
   </section>
 
   <!-- ================= FOOTER ================= -->
-  <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-12 transition-colors">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-100 dark:border-slate-800">
-        
-        <div class="flex items-center gap-3">
-          <div class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-900 flex items-center justify-center p-1.5 border border-slate-200 dark:border-slate-800">
-            <svg viewBox="0 0 192 116" class="w-full h-auto" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M57.6 0H0L57.6 58L0 116H57.6L115.2 58L57.6 0Z" fill="#4285F4"/>
-              <path d="M134.4 0H76.8L134.4 58L76.8 116H134.4L192 58L134.4 0Z" fill="#EA4335"/>
-              <path d="M76.8 0H57.6L115.2 58L57.6 116H76.8L134.4 58L76.8 0Z" fill="#FBBC05"/>
-              <path d="M115.2 0H96L153.6 58L96 116H115.2L172.8 58L115.2 0Z" fill="#34A853"/>
-            </svg>
-          </div>
-          <span class="font-display font-bold text-base text-slate-900 dark:text-white">GDG Ayacucho</span>
-        </div>
-
-        <div class="text-xs text-slate-500 dark:text-slate-400 text-center md:text-right">
-          Disclaimer: GDG Ayacucho es un grupo independiente; nuestras actividades no deben ser vinculadas directamente a la corporación Google Inc.
-        </div>
-
-      </div>
-
-      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
-        <p>&copy; 2026 GDG Ayacucho • Huamanga, Ayacucho, Perú. Hecho con ❤️ y código libre.</p>
-        <div class="flex gap-4">
-          <a href="https://developers.google.com/community-guidelines" target="_blank" rel="noopener noreferrer" class="hover:text-google-blue">Código de Conducta</a>
-          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="hover:text-google-blue">Privacidad</a>
-        </div>
-      </div>
-
-    </div>
+  <footer class="py-10 border-t border-slate-200 dark:border-[#30363d] text-center text-xs text-slate-500 dark:text-slate-400">
+    <p>GDG Ayacucho • Comunidad de Desarrolladores de Google en Huamanga, Ayacucho</p>
+    <p class="mt-1">Inspirando y automatizando con código libre 🚀</p>
   </footer>
 
-  <!-- ================= SCRIPTS ================= -->
+  <!-- ================= SCRIPT ================= -->
   <script>
-    // 1. Dark Mode Management
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const lightIcon = document.getElementById('theme-icon-light');
-    const darkIcon = document.getElementById('theme-icon-dark');
+    // Theme toggle
+    const toggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
 
-    function applyTheme(isDark) {
-      if (isDark) {
+    function setTheme(dark) {
+      if (dark) {
         document.documentElement.classList.add('dark');
-        lightIcon.classList.remove('hidden');
-        darkIcon.classList.add('hidden');
-        localStorage.setItem('theme', 'dark');
+        themeIcon.textContent = '☀️';
+        localStorage.setItem('gh_theme', 'dark');
       } else {
         document.documentElement.classList.remove('dark');
-        darkIcon.classList.remove('hidden');
-        lightIcon.classList.add('hidden');
-        localStorage.setItem('theme', 'light');
+        themeIcon.textContent = '🌙';
+        localStorage.setItem('gh_theme', 'light');
       }
     }
 
-    const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialDark = savedTheme ? savedTheme === 'dark' : systemPrefersDark;
-    applyTheme(initialDark);
+    const saved = localStorage.getItem('gh_theme');
+    setTheme(saved ? saved === 'dark' : true);
 
-    themeToggleBtn.addEventListener('click', () => {
+    toggleBtn.addEventListener('click', () => {
       const isDark = document.documentElement.classList.contains('dark');
-      applyTheme(!isDark);
+      setTheme(!isDark);
     });
 
-    // 2. Mobile Menu Toggle
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
+    // Copy YAML
+    const copyBtn = document.getElementById('copy-btn');
+    copyBtn.addEventListener('click', () => {
+      const rawYaml = `name: CI/CD Pipeline
 
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      saludo:
+        description: "Selecciona un saludo"
+        type: choice
+        options: ["Hola", "Adiós"]
 
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          echo "hola \${{ github.actor }}; commit: \${{ github.sha }}"
+      - run: |
+          echo "Elegiste: \${{ inputs.saludo }}"`;
+      
+      navigator.clipboard.writeText(rawYaml).then(() => {
+        copyBtn.innerHTML = '<span class="text-green-500">¡Copiado!</span>';
+        setTimeout(() => {
+          copyBtn.innerHTML = '<span>Copiar YAML</span>';
+        }, 2000);
       });
     });
-
-    // 3. FAQ Accordion
-    document.querySelectorAll('.faq-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const content = btn.nextElementSibling;
-        const icon = btn.querySelector('.faq-icon');
-        const isOpen = !content.classList.contains('hidden');
-
-        // Cerrar otros
-        document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
-        document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('rotate-180'));
-
-        if (!isOpen) {
-          content.classList.remove('hidden');
-          icon.classList.add('rotate-180');
-        }
-      });
-    });
-
-    // 4. RSVP interaction feedback
-    function handleRSVP() {
-      alert('¡Gracias por tu interés en GDG Ayacucho!\n\nTe estamos redirigiendo a la plataforma oficial de la comunidad para completar tu inscripción.');
-      window.open('https://gdg.community.dev/', '_blank');
-    }
   </script>
 
 </body>

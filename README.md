@@ -1,28 +1,18 @@
-# GDG Ayacucho - Landing Page 🚀
+# GitHub Actions & CI/CD - GDG Ayacucho 🚀
 
-Landing page moderna y receptiva para la comunidad oficial de **Google Developer Groups (GDG) Ayacucho**, Perú.
+Landing page técnica dedicada al aprendizaje y uso de **GitHub Actions** y pipelines de Integración/Entrega Continua (CI/CD), con la identidad de **GDG Ayacucho**.
 
-## 🌟 Características
-- **Identidad Oficial GDG**: Colores Google (#4285F4, #EA4335, #FBBC05, #34A853) e isotipo en SVG.
-- **Temas**: Modo Claro y Modo Oscuro (Dark / Light Mode) con detección automática y persistencia.
-- **Secciones**:
-  - Hero con badges flotantes y llamadas a la acción (CTA).
-  - Métricas de la comunidad.
-  - Acerca del GDG y pilares de impacto regional.
-  - Tracks tecnológicos (AI & Gemini, Cloud, Flutter & Android, Web & Astro).
-  - Agenda y eventos principales (DevFest Ayacucho).
-  - Preguntas frecuentes interactivas (FAQ Accordion).
-  - Enlaces a la comunidad oficial de Bevy GDG y redes sociales.
-- **Tecnologías**: HTML5, Tailwind CSS, Google Fonts ("Plus Jakarta Sans", "Space Grotesk") y JavaScript vanilla sin dependencias pesadas.
-- **Compatible con despliegues directos**: GitHub Pages, Firebase Hosting, Vercel, Netlify.
+## 🌟 Contenido
+- **Los 4 pilares de un Workflow**: `on:` (eventos), `jobs:` (entornos de ejecución), `steps:` (pasos), `actions` (módulos reutilizables).
+- **Código interactivo en vivo**: Muestra el workflow real `.github/workflows/blank.yml` con botón para copiarlo fácilmente.
+- **Tip de sintaxis YAML**: Explicación de cómo evitar el error de mapeo al usar dos puntos (`: `) en comandos `run`.
+- **Casos de uso**: Pruebas automáticas, despliegues continuos (Firebase, Pages, Cloud) y linters de seguridad.
+- **Preguntas frecuentes** sobre GitHub Actions.
+- **Modo Claro / Modo Oscuro** estilo GitHub/Google.
 
 ## 💻 Vista previa local
-Simplemente abre [`index.html`](index.html) en tu navegador web favorito, o ejecuta un servidor estático:
+Abre [`index.html`](index.html) directamente en tu navegador o ejecuta:
 
 ```bash
-# Con Python
 python3 -m http.server 8080
-
-# O con npx
-npx serve .
 ```
