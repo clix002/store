@@ -2,7 +2,12 @@
     
     on:
       push:
-        branches: [ "main" ]
+      workflow_dispatch:
+        inputs:
+          saludo:
+            type: choice
+            options: ["Hola", "Adiós"]
+    
     
     jobs:
       # Job 1: Pruebas unitarias
@@ -10,20 +15,5 @@
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v4
-          - run: npm test
-    
-      # Job 2: Revisión de estilo (Corre AL MISMO TIEMPO que las pruebas)
-      linter:
-        runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@v4
-          - run: npm run lint
-    
-      # Job 3: Despliegue (ESPERA a que terminen los dos anteriores)
-      deploy:
-        runs-on: ubuntu-latest
-        needs: [unit-tests, linter] # <-- No inicia hasta que ambos pasen con éxito
-        steps:
-          - uses: actions/checkout@v4
-          - run: npm run build
-          - run: echo "Desplegando a Firebase..."
+          - run: echo "hola ${{ github.actor }}; commit: ${{ github.sha }}"
+          - run: echo "Elegiste: ${{ inputs.saludo }}"
