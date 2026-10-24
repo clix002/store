@@ -1,7 +1,6 @@
 name: Deploy to Firebase Hosting on PR
 on: pull_request
 permissions:
-  checks: write
   contents: read
   pull-requests: write
 
@@ -13,9 +12,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Deploy preview to Firebase Hosting
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CLIX_C0A4B }}
-          projectId: clix-c0a4b
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
+      - name: Deploy Preview to Firebase Hosting
+        run: firebase hosting:channel:deploy pr-${{ github.event.pull_request.number }} --token "${{ secrets.FIREBASE_TOKEN }}"

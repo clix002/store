@@ -11,10 +11,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Deploy to Firebase Hosting (Live Channel)
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CLIX_C0A4B }}
-          channelId: live
-          projectId: clix-c0a4b
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
+      - name: Deploy to Firebase Hosting (Live)
+        run: firebase deploy --only hosting --token "${{ secrets.FIREBASE_TOKEN }}"
