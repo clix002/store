@@ -1,0 +1,29 @@
+name: Mi Primer Workflow
+
+# ¿CUÁNDO se ejecuta?
+on:
+  push:
+    branches: [ "main" ]    # Cuando subes cambios a la rama 'main'
+  workflow_dispatch:        # Permite ejecutarlo manualmente con un botón desde GitHub
+
+# ¿QUÉ va a hacer?
+jobs:
+  primer-trabajo:
+    runs-on: ubuntu-latest  # Máquina virtual con Linux Ubuntu
+
+    steps:
+      # Paso 1: Descarga los archivos de tu repositorio a la máquina virtual
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      # Paso 2: Imprime un mensaje en la terminal
+      - name: Saludo inicial
+        run: echo "¡Hola! Tu primer GitHub Action está funcionando con éxito."
+
+      # Paso 3: Muestra variables útiles que GitHub provee automáticamente
+      - name: Información de la ejecución
+        run: |
+          echo "Disparado por: $GITHUB_ACTOR"
+          echo "Rama o referencia: $GITHUB_REF"
+          echo "Commit: $GITHUB_SHA"
+          echo "Fecha del servidor: $(date)"
